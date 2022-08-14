@@ -26,4 +26,8 @@ jobs:
       run: |
         cd spring-boot-app/
         mvn package
+    - name: build docker image
+      run: |
+        cd spring-boot-app/
+        docker build . -t yannickeboo/spring-actions:build-number@v3
         
