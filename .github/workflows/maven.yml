@@ -30,4 +30,25 @@ jobs:
       run: |
         cd spring-boot-app/
         docker build . --tag yannickeboo/spring-actions --file Dockerfile
-        
+    - name: Login to DockerHub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}
+    - name: Download artifact
+      uses: actions/download-artifact@v2
+
+    - name: Build and push
+      id: docker_build
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        push: true
+        tags: yannickeboo/spring-actions
+    - name: Build and push
+      id: docker_build2
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        push: true
+        tags: yannickeboo/spring-actions    
