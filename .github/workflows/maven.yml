@@ -29,5 +29,5 @@ jobs:
     - name: build docker image
       run: |
         cd spring-boot-app/
-        docker build . --tag yannickeboo/spring-actions:build-number@v3 --file Dockerfile
+        docker build . --tag yannickeboo/spring-actions --file Dockerfile
         
